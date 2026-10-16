@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GitHub Top Repos — All-time &amp; Weekly Trending</title>
+<link rel="stylesheet" href="/styles.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⭐</text></svg>" />
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="mark">★</span>
+    <div>
+      <h1>GitHub Top Repos</h1>
+      <p class="sub" id="subtitle">The 1,000 most starred repositories on GitHub</p>
+    </div>
+  </div>
+  <div class="actions">
+    <span class="badge" id="meta-badge">loading…</span>
+    <button id="refresh" class="btn" type="button">Refresh from GitHub</button>
+  </div>
+</header>
+
+<div class="filters" role="tablist" aria-label="Repository dataset">
+  <button class="filter active" type="button" role="tab" data-dataset="all-time" aria-selected="true">
+    <span class="filter-title">All-time top 2500</span>
+    <span class="filter-sub">Most starred repositories ever</span>
+  </button>
+  <button class="filter" type="button" role="tab" data-dataset="weekly" aria-selected="false">
+    <span class="filter-title">Weekly trending 2500</span>
+    <span class="filter-sub">Most starred, active in the last 7 days</span>
+  </button>
+</div>
+
+<div class="note" id="note" hidden></div>
+
+<div class="stats" id="stats"></div>
+
+<section class="controls">
+  <input id="search" class="input" type="search" placeholder="Filter by name, owner, description…  (press /)" autocomplete="off" aria-label="Filter repositories" />
+  <div class="spacer"></div>
+  <label class="rows-label">Rows
+    <select id="page-size" class="input select" aria-label="Rows per page">
+      <option>25</option>
+      <option selected>50</option>
+      <option>100</option>
+      <option>250</option>
+    </select>
+  </label>
+</section>
+
+<main>
+  <table id="table">
+    <thead>
+      <tr>
+        <th class="sortable num" data-key="rank" data-type="num">#</th>
+        <th class="sortable" data-key="full_name" data-type="text">Repository</th>
+        <th class="sortable" data-key="language" data-type="text">Language</th>
+        <th class="sortable num" data-key="stars" data-type="num">Stars</th>
+        <th class="sortable num" data-key="forks" data-type="num">Forks</th>
+        <th class="sortable num" data-key="open_issues" data-type="num">Issues</th>
+        <th class="sortable num" data-key="pushed_at" data-type="date" id="th-updated">Updated</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+  <p id="empty" class="empty" hidden>No repositories match that filter.</p>
+  <div class="pager">
+    <button id="prev" class="btn" type="button">← Prev</button>
+    <span id="page-info" class="page-info"></span>
+    <button id="next" class="btn" type="button">Next →</button>
+  </div>
+</main>
+
+<div id="toast" class="toast" hidden></div>
+
+<script src="/app.js"></script>
+</body>
+</html>

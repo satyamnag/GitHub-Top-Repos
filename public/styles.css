@@ -1,0 +1,315 @@
+:root {
+  --bg: #0d1117;
+  --bg-elev: #161b22;
+  --bg-hover: #1c2230;
+  --border: #2a313c;
+  --text: #e6edf3;
+  --muted: #8b949e;
+  --accent: #58a6ff;
+  --star: #e3b341;
+  --green: #3fb950;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  padding-bottom: 48px;
+}
+
+/* ---------------------------------------------------------------- header */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 18px 28px;
+  background: var(--bg-elev);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brand { display: flex; align-items: center; gap: 14px; }
+
+.mark {
+  display: grid;
+  place-items: center;
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #1f6feb, #8957e5);
+  color: #fff;
+  font-size: 20px;
+}
+
+.topbar h1 { font-size: 18px; margin: 0; letter-spacing: -0.2px; }
+.sub { margin: 0; font-size: 12px; color: var(--muted); }
+
+.actions { display: flex; align-items: center; gap: 10px; }
+
+.badge {
+  font-size: 12px;
+  color: var(--muted);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 5px 12px;
+  white-space: nowrap;
+}
+
+.btn {
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background .15s, border-color .15s;
+}
+.btn:hover:not(:disabled) { background: var(--bg-hover); border-color: #3d4654; }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+
+/* ---------------------------------------------------------------- filters */
+
+.filters {
+  display: flex;
+  gap: 12px;
+  padding: 20px 28px 0;
+  flex-wrap: wrap;
+}
+
+.filter {
+  flex: 1 1 260px;
+  text-align: left;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 13px 16px;
+  cursor: pointer;
+  color: var(--text);
+  font: inherit;
+  transition: border-color .15s, background .15s;
+}
+.filter:hover { border-color: #3d4654; background: var(--bg-hover); }
+.filter.active {
+  border-color: var(--accent);
+  background: linear-gradient(180deg, rgba(88,166,255,.10), rgba(88,166,255,.03));
+  box-shadow: 0 0 0 1px var(--accent) inset;
+}
+.filter:disabled { opacity: .45; cursor: not-allowed; }
+
+.filter-title { display: block; font-weight: 600; font-size: 14px; }
+.filter.active .filter-title { color: var(--accent); }
+.filter-sub { display: block; font-size: 12px; color: var(--muted); margin-top: 3px; }
+
+/* Honest-metric disclosure banner. */
+.note {
+  margin: 14px 28px 0;
+  padding: 11px 15px;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--star);
+  border-radius: 8px;
+  background: rgba(227,179,65,.05);
+  font-size: 12.5px;
+  color: #c9d1d9;
+  line-height: 1.6;
+}
+.note strong { color: var(--star); }
+.note code {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-size: 11.5px;
+  color: var(--accent);
+  word-break: break-all;
+}
+.note ul { margin: 6px 0 0; padding-left: 18px; }
+.note li { margin-top: 3px; }
+
+/* ---------------------------------------------------------------- stats */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 12px;
+  padding: 16px 28px 4px;
+}
+
+.stat {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+.stat .label { font-size: 11px; text-transform: uppercase; letter-spacing: .6px; color: var(--muted); }
+.stat .value { font-size: 21px; font-weight: 600; margin-top: 5px; }
+.stat .value.small { font-size: 15px; }
+
+/* ---------------------------------------------------------------- controls */
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 28px 12px;
+  flex-wrap: wrap;
+}
+
+.spacer { flex: 1; }
+
+.input {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 9px 13px;
+  font-size: 14px;
+  outline: none;
+  min-width: 320px;
+}
+.input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(88,166,255,.15); }
+.input::placeholder { color: #6e7681; }
+
+.select { min-width: auto; padding: 8px 10px; }
+.rows-label { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+
+/* ---------------------------------------------------------------- table */
+
+main { padding: 0 28px; }
+
+/* The table is its own scroll container, so the sticky header pins to the
+   top of THIS box (a vertical + horizontal scrollport) rather than to the
+   page. `overflow: auto` on a wrapper would break sticky positioning, so
+   the overflow lives on the table itself. */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: block;
+  max-height: calc(100vh - var(--topbar-h, 82px) - 24px);
+  overflow: auto;
+}
+
+thead { display: table-header-group; }
+tbody { display: table-row-group; }
+
+/* Offset by the actual topbar height, published as --topbar-h from JS. */
+thead th {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: #1b212b;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: var(--muted);
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+  user-select: none;
+}
+
+th.sortable { cursor: pointer; }
+th.sortable:hover { color: var(--text); }
+th.num { text-align: right; }
+
+th.sortable::after { content: ""; margin-left: 6px; opacity: .35; font-size: 10px; }
+th.sortable[data-dir="asc"]::after  { content: "▲"; opacity: 1; color: var(--accent); }
+th.sortable[data-dir="desc"]::after { content: "▼"; opacity: 1; color: var(--accent); }
+
+tbody tr { border-bottom: 1px solid #21262d; cursor: pointer; }
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover { background: var(--bg-hover); }
+
+td { padding: 11px 14px; vertical-align: middle; border-bottom: 1px solid #21262d; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* Edge cells need no outer border now that the table owns its own border. */
+thead th:first-child, tbody td:first-child { padding-left: 16px; }
+thead th:last-child, tbody td:last-child { padding-right: 16px; }
+
+.rank { color: var(--muted); font-variant-numeric: tabular-nums; }
+
+.repo { display: flex; align-items: center; gap: 11px; }
+.repo img { width: 26px; height: 26px; border-radius: 6px; flex: none; background: #21262d; }
+.repo .name { font-weight: 600; color: var(--accent); }
+.repo .owner { color: var(--muted); font-weight: 400; }
+.repo .desc {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 2px;
+  max-width: 620px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lang { display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; }
+.dot { width: 9px; height: 9px; border-radius: 50%; flex: none; background: var(--muted); }
+
+.stars { color: var(--star); font-weight: 600; }
+.muted { color: var(--muted); }
+
+.tag {
+  font-size: 10px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 5px;
+  color: var(--muted);
+  margin-left: 6px;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+}
+
+.empty { text-align: center; color: var(--muted); padding: 40px 0; }
+
+/* ---------------------------------------------------------------- pager */
+
+.pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 18px 0 10px;
+}
+.page-info { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+/* ---------------------------------------------------------------- toast */
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 8px;
+  padding: 11px 18px;
+  font-size: 13px;
+  box-shadow: 0 8px 26px rgba(0,0,0,.5);
+  z-index: 50;
+  max-width: 90vw;
+}
+.toast.err { border-left-color: #f85149; }
+
+@media (max-width: 900px) {
+  .topbar, .controls, main { padding-left: 14px; padding-right: 14px; }
+  .stats { padding-left: 14px; padding-right: 14px; }
+  .input { min-width: 0; width: 100%; }
+  .repo .desc { max-width: 260px; }
+}
